@@ -33,7 +33,8 @@
   console.log(font);
 };
     async function fetchGoogleFonts() {
-      const apiKey = 'AIzaSyAwQST2Sc8zx9GrsrEytKuhp6VLaWp85bM';
+      const apiKey = import.meta.env.VITE_GOOGLE_FONTS_KEY;
+      console.log(apiKey)
       const response = await fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${apiKey}`);
       const data = await response.json();
       return data.items.map(fonts => ({
