@@ -1,4 +1,5 @@
 <template>
+    <Login />
     <div class="container">
       <!-- Customizer Form Component -->
       <CustomizerForm :customization="customization" :formSchema="formSchema" @addField="addFieldToSchema" class="form"/>
@@ -10,9 +11,11 @@
   <script>
   import CustomizerForm from './CustomizerForm.vue';
   import StyledForm from './StyledForm.vue';
+  import Login from './Login.vue'
   
   export default {
     components: {
+      Login,
       CustomizerForm,
       StyledForm
     },
