@@ -39,7 +39,7 @@
 };
     async function fetchGoogleFonts() {
       const isProduction = process.env.NODE_ENV === 'production';
-      const baseUrl = isProduction ? '/api/google-fonts' : 'https://www.googleapis.com/webfonts/v1/webfonts';
+      const baseUrl = isProduction ? '/api/fonts' : 'https://www.googleapis.com/webfonts/v1/webfonts';
       const apiKey = isProduction ? '' : import.meta.env.VITE_GOOGLE_FONTS_KEY;
 
       const response = await fetch(`${baseUrl}?key=${apiKey}`);
