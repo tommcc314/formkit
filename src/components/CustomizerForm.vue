@@ -36,12 +36,13 @@
   link.href = `https://fonts.googleapis.com/css?family=${font.replace(' ', '+')}&display=swap`;
   link.rel = 'stylesheet';
   document.head.appendChild(link);
-  console.log(font);
 };
     async function fetchGoogleFonts() {
-      const apiKey = import.meta.env.VITE_GOOGLE_FONTS_KEY;
-      console.log(apiKey)
-      const response = await fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${apiKey}`);
+      const isProduction = process.env.NODE_ENV === 'production';
+      const baseUrl = isProduction ? '/api/google-fonts' : 'https://www.googleapis.com/webfonts/v1/webfonts';
+      const apiKey = isProduction ? '' : import.meta.env.VITE_GOOGLE_FONTS_KEY;
+
+      const response = await fetch(`${baseUrl}?key=${apiKey}`);
       const data = await response.json();
       return data.items.map(fonts => ({
         label: fonts.family,
