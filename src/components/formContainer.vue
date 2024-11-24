@@ -22,16 +22,21 @@
         
         customization: {
           color: 'black',  // Default color
-          font: 'Arial'    // Default font
+          font: 'Arial',    // Default font
+          layout: 'Single Step'
         },
       formSchema: [
         {
           type: "text",
           label: "Full Name",
+          step: "contactInfo",
+          validation: ""
         },
         {
           type: "email",
           label: "Email Address",
+          step: "contactInfo",
+          validation: ""
         }
       ]
       };

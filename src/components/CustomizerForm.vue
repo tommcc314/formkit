@@ -14,6 +14,12 @@
           :options="fontOptions"
           @input="onFontSelect"
         />
+        <FormKit 
+          type="select"
+          label="Layout"
+          :options="layoutOptions"
+          v-model="customization.layout"
+          />
         <h2>Add Field</h2>
         <FormKit 
           type="text"
@@ -46,7 +52,7 @@
     props: {
       customization: {
         type: Object,
-        required: true
+        required: true,
       },
       formSchema: {
       type: Array,
@@ -58,9 +64,12 @@
         // Options for the select dropdowns
         newField: {
         type: 'text',
-        label: ''
+        label: '',
+        step: 'usageDetails',
+        validation: ''
         },
-        fontOptions: []
+        fontOptions: [],
+        layoutOptions: ["Single Step", "Multi Step"]
       };
     },
     mounted() {
@@ -75,7 +84,7 @@
       },
       addNewField() {
         this.$emit('addField', this.newField);  // Emit the event to the parent
-        this.newField = { type: 'text', label: ''};  // Reset the form
+        this.newField = { type: 'text', label: '', step: 'usageDetails', validation: ''};  // Reset the form
       }
     }
   };
